@@ -38,7 +38,9 @@ pipeline {
             steps {
                 script {
                     // Publishing the application
+					bat 'net stop "w3svc"'
                     bat "dotnet publish --no-restore --configuration Release --output .\\publish"
+					bat 'net start "w3svc"'
                 }
             }
         }
